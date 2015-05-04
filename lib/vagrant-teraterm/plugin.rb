@@ -4,7 +4,7 @@ module VagrantTeraTerm
   class Plugin < Vagrant.plugin("2")
     name "TeraTerm Plugin"
     description <<-DESC
-    This plugin enables to ssh into vm with TeraTerm.
+    This plugin enables to ssh into vm using TeraTerm.
     DESC
 
     command "teraterm" do
