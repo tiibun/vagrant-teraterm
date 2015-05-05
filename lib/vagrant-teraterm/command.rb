@@ -50,8 +50,8 @@ module VagrantTeraTerm
 
         commands << "/ssh-A" if ssh_info[:forward_agent]
         commands << "/ssh-X" if ssh_info[:forward_x11]
-        commands << "/f=#{absolute_winpath(@config.ini_path)}" if not @config.ini_path.nil?
-        commands << "/L=#{absolute_winpath(@config.log_path)}" if not @config.log_path.nil?
+        commands << "/f=#{absolute_winpath(vm, @config.ini_path)}" if not @config.ini_path.nil?
+        commands << "/L=#{absolute_winpath(vm, @config.log_path)}" if not @config.log_path.nil?
         commands << @config.extra_args if not @config.extra_args.nil?
 
         @logger.debug(commands)
@@ -86,10 +86,10 @@ module VagrantTeraTerm
       nil
     end
 
-    def absolute_winpath(path)
+    def absolute_winpath(vm, path)
       p = Pathname(path)
       return path.gsub(/\//, "\\") if p.absolute?
-      return Pathname(@env.root_path).join(p).to_s.gsub(/\//, "\\")
+      return Pathname(vm.env.root_path).join(p).to_s.gsub(/\//, "\\")
     end
 
     def do_process(commands)
