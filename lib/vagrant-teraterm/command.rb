@@ -19,7 +19,6 @@ module VagrantTeraTerm
 
       with_target_vms(argv, single_target: true) do |vm|
         @config = vm.config.teraterm
-        @logger.debug("config is #@config")
 
         ssh_info = vm.ssh_info
         @logger.debug("ssh_info is #{ssh_info}")
@@ -88,7 +87,9 @@ module VagrantTeraTerm
     end
 
     def absolute_winpath(path)
-      File.expand_path(path).gsub(/\//, "\\")
+      p = Pathname(path)
+      return path.gsub(/\//, "\\") if p.absolute?
+      return Pathname(@env.root_path).join(p).to_s.gsub(/\//, "\\")
     end
 
     def do_process(commands)

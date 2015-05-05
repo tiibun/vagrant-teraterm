@@ -33,8 +33,8 @@ end
   * If not set, search "ttermpro.exe" in PATH.
   * If not found in PATH, use 'C:\Program Files (x86)\teraterm\ttermpro.exe'
  or 'C:\Program Files\teraterm\ttermpro.exe'
-* ```ini_path``` TERATERM.INI file absolute path or relative path from current dir.
-* ```log_path``` Log file absolute path or relative path from current dir.
+* ```ini_path``` TERATERM.INI file absolute path or relative path from Vagrantfile dir.
+* ```log_path``` Log file absolute path or relative path from Vagrantfile dir.
 * ```extra_args``` Extra arguments.
 
 
