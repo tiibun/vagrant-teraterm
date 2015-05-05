@@ -38,16 +38,15 @@ module VagrantTeraTerm
             "/user=#{ssh_info[:username]}"
         ]
 
-        if ssh_info.include?(:private_key_path)
-          ssh_info[:private_key_path].each do |p|
-            commands << "/keyfile=#{File.expand_path(p)}"
-          end
-          commands << "/auth=publickey"
-        end
 
         if ssh_info.include?(:password)
           commands << "/passwd=#{ssh_info[:password]}"
           commands << "/auth=password"
+        elsif ssh_info.include?(:private_key_path)
+          Array(ssh_info[:private_key_path]).each do |p|
+            commands << "/keyfile=#{File.expand_path(p)}"
+          end
+          commands << "/auth=publickey"
         end
 
         commands << "/ssh-A" if ssh_info[:forward_agent]
@@ -89,7 +88,7 @@ module VagrantTeraTerm
     end
 
     def absolute_winpath(path)
-      File.expand_path(path).gsub(/\//, "\\") 
+      File.expand_path(path).gsub(/\//, "\\")
     end
 
     def do_process(commands)
