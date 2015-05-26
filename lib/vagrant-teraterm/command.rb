@@ -50,8 +50,8 @@ module VagrantTeraTerm
 
         commands << "/ssh-A" if ssh_info[:forward_agent]
         commands << "/ssh-X" if ssh_info[:forward_x11]
-        commands << "/f=#{absolute_winpath(vm, @config.ini_path)}" if not @config.ini_path.nil?
-        commands << "/L=#{absolute_winpath(vm, @config.log_path)}" if not @config.log_path.nil?
+        commands << "/f=\"#{absolute_winpath(vm, @config.ini_path)}\"" if not @config.ini_path.nil?
+        commands << "/L=\"#{absolute_winpath(vm, @config.log_path)}\"" if not @config.log_path.nil?
         commands << @config.extra_args if not @config.extra_args.nil?
 
         @logger.debug(commands)
