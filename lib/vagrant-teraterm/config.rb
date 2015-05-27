@@ -21,6 +21,12 @@ module VagrantTeraTerm
     # @return [String]
     attr_accessor :log_path
 
+    # TeraTerm macro file absolute path or relative path.
+    # Default is nil
+    #
+    # @return [String]
+    attr_accessor :macro_path
+
     # Extra arguments.
     # Default is nil.
     #

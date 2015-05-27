@@ -22,6 +22,7 @@ Vagrant.configure(2) do |config|
   config.teraterm.exe_path = 'C:\Program Files (x86)\teraterm\ttermpro.exe'
   config.teraterm.ini_path = "teraterm.ini"
   config.teraterm.log_path = "teraterm.log"
+  config.teraterm.macro_path = "macro.ttl"
   config.teraterm.extra_args = "/ssh-v"
   # ...
 end
@@ -35,6 +36,7 @@ end
  or 'C:\Program Files\teraterm\ttermpro.exe'
 * ```ini_path``` TERATERM.INI file absolute path or relative path from Vagrantfile dir.
 * ```log_path``` Log file absolute path or relative path from Vagrantfile dir.
+* ```macro_path``` TeraTerm macro file absolute path or relative path from Vagrantfile dir.
 * ```extra_args``` Extra arguments.
 
 
