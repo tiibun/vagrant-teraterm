@@ -34,6 +34,8 @@ module VagrantTeraTerm
             "#{ssh_info[:port]}",
             "/ssh",
             "/2",
+            # skip host key verification
+            "/nosecuritywarning",
             "/user=#{ssh_info[:username]}"
         ]
 
